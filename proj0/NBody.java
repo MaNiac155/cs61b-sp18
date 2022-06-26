@@ -1,5 +1,8 @@
 public class NBody {
     public static double readRadius(String filename) {
+        /**
+         * read the radius of the whole universe
+         */
         In in = new In(filename);
         in.readInt();
         double radius = in.readDouble();
@@ -7,6 +10,9 @@ public class NBody {
     }
 
     public static Planet[] readPlanets(String filename) {
+        /**
+         * read all planets from the file, and store in a list
+         */
         In in = new In(filename);
         int n = in.readInt();
         int i;
@@ -39,7 +45,7 @@ public class NBody {
         planets = readPlanets(filename);
 
         StdDraw.setXscale(-radius, radius);
-        StdDraw.setYscale(-radius, radius);
+        StdDraw.setYscale(-radius, radius);//set scale
         StdDraw.clear();
         StdDraw.picture(0, 0, "images/starfield.jpg");
 
@@ -49,7 +55,10 @@ public class NBody {
 
         StdDraw.enableDoubleBuffering();
         double t = 0;
-        while (t<=T) {               
+        while (t<=T) { 
+            /**
+             * make it move
+             */
                 double[] xForces = new double[planets.length];
                 double[] yForces = new double[planets.length];
                 for (i = 0; i < planets.length; i++) {

@@ -5,8 +5,6 @@ public class Planet{
     public double yyVel;
     public double mass;
     public String imgFileName;
-    
-    
 
     public Planet(double xP,double yP,double xV,
                 double yV,double m, String img){
@@ -19,6 +17,8 @@ public class Planet{
         
     }
     public Planet(Planet b){
+        /**
+         * a constructor with a object instant */
         // this.xxPos=b.xxPos;
         // this.yyPos=b.yyPos;
         // this.xxVel=b.xxVel;
@@ -29,6 +29,8 @@ public class Planet{
     }
 
     public double calcDistance(Planet that){
+        /**
+         * calculate the distance between a planet and this planet */
         double r,dx,dy;
         dx=that.xxPos-this.xxPos;
         dy=that.yyPos-this.yyPos;
@@ -36,6 +38,9 @@ public class Planet{
         return r;
     }
     public double calcForceExertedBy(Planet that){
+        /**
+         * calculate force
+         */
         double force;
         double G=6.67e-11;
         double r=calcDistance(that);
@@ -44,6 +49,9 @@ public class Planet{
         return force;
     }
     public double calcForceExertedByX(Planet that){
+        /**
+         * x-components of force
+         */
         double force=calcForceExertedBy(that);
         double r=calcDistance(that);
         double dx=that.xxPos-this.xxPos;
@@ -61,6 +69,9 @@ public class Planet{
     }
 
     public double calcNetForceExertedByX(Planet[] allPlanets){
+        /**
+         * all force together
+         */
         double f_x=0;
         int i;
         for(i=0;i<allPlanets.length;i++){
@@ -81,6 +92,9 @@ public class Planet{
         return f_y;
     }
     public void update(double dt,double fX,double fY){
+        /**
+         * update v,x
+         */
         double aX,aY;
         aX=fX/this.mass;
         aY=fY/this.mass;
